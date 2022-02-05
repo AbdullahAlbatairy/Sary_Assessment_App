@@ -36,8 +36,8 @@ class Items extends StatelessWidget {
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           const TransactionDetails())),
-                              child: card(key, "i", "Afia Corn Oil", "PRO-SA2",
-                                  "6 x 320 ml", 12.13));
+                              child: CustomCard(key, "i", "Afia Corn Oil",
+                                  "PRO-SA2", "6 x 320 ml", 12.13));
                         }),
                   ),
                 ],

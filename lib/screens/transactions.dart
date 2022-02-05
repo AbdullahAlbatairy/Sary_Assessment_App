@@ -34,7 +34,7 @@ class Transactions extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                               onTap: () => print("hi"),
-                              child: card(
+                              child: CustomCard(
                                 key,
                                 "t",
                                 "Afia Corn Oil",

@@ -14,10 +14,10 @@ class TransactionDetails extends StatelessWidget {
           titleName: "Transaction Details",
         ),
         body: Container(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.fromLTRB(15, 15, 15, 40),
             height: MediaQuery.of(context).size.height,
             color: Colors.grey[200],
-            child: card(
+            child: CustomCard(
               key,
               "d",
               "Afia Corn Oil",

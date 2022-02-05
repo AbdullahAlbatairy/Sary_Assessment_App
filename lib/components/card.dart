@@ -2,7 +2,7 @@ import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class card extends StatelessWidget {
+class CustomCard extends StatelessWidget {
   //General Variables (all screens)
   final String screenCard; // t = transaction, i = item, d = details
   final String name;
@@ -21,7 +21,7 @@ class card extends StatelessWidget {
   //detail Screen
   final int? qt; //quantity
 
-  const card(
+  const CustomCard(
     Key? key,
     this.screenCard,
     this.name,
@@ -221,7 +221,7 @@ class card extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Row(
