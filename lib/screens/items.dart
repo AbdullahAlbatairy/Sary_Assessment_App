@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
 import 'package:sary_assessment_app/components/card.dart';
 import 'package:sary_assessment_app/components/elavated_button.dart';
 import 'package:sary_assessment_app/components/app_bar.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'dart:math' as math;
 import 'package:intl/intl.dart';
+import 'package:sary_assessment_app/screens/transaction_detail.dart';
 
 class Items extends StatelessWidget {
   const Items({Key? key}) : super(key: key);
@@ -31,9 +31,13 @@ class Items extends StatelessWidget {
                         itemCount: 10,
                         itemBuilder: (context, index) {
                           return GestureDetector(
-                              onTap: () => print("hi"),
-                              child: card(key, false, "Afia Corn Oil",
-                                  "PRO-SA2", "6 x 320 ml", 12.13));
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const TransactionDetails())),
+                              child: card(key, "i", "Afia Corn Oil", "PRO-SA2",
+                                  "6 x 320 ml", 12.13));
                         }),
                   ),
                 ],
@@ -49,40 +53,5 @@ class Items extends StatelessWidget {
             )
           ],
         ));
-  }
-
-  Row searchBar() {
-    return Row(
-      children: [
-        Flexible(
-          child: Material(
-            elevation: 0,
-            borderRadius: BorderRadius.circular(30.0),
-            child: TextField(
-              decoration: InputDecoration(
-                focusColor: Colors.black,
-                border: InputBorder.none,
-                prefixIcon: Transform.rotate(
-                  angle: 90 * math.pi / 180,
-                  child: const IconButton(
-                    icon: Icon(CommunityMaterialIcons.magnify),
-                    onPressed: null,
-                  ),
-                ),
-                hintText: "Search",
-              ),
-            ),
-          ),
-        ),
-        RawMaterialButton(
-          elevation: 0,
-          onPressed: () {},
-          child: const Icon(CommunityMaterialIcons.filter_outline),
-          padding: const EdgeInsets.all(10.0),
-          shape: const CircleBorder(),
-          fillColor: Colors.white,
-        )
-      ],
-    );
   }
 }

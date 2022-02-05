@@ -36,7 +36,7 @@ class Transactions extends StatelessWidget {
                               onTap: () => print("hi"),
                               child: card(
                                 key,
-                                true,
+                                "t",
                                 "Afia Corn Oil",
                                 "PRO-SA2",
                                 "6 x 320 ml",
