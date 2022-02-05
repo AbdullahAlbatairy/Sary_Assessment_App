@@ -1,7 +1,7 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:sary_assessment_app/components/app_bar.dart';
-import 'package:sary_assessment_app/components/card.dart';
+import 'package:sary_assessment_app/components/custom_card.dart';
 import 'package:sary_assessment_app/components/elavated_button.dart';
 
 class TransactionDetails extends StatelessWidget {
