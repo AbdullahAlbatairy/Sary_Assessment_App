@@ -20,4 +20,18 @@ class CRUD {
       print("missing values");
     }
   }
+
+  static void editItem(
+      Item item, String name, String sku, String desc, double price) {
+    item.name = name;
+    item.sku = sku;
+    item.desc = desc;
+    item.price = price;
+
+    item.save();
+  }
+
+  static void deleteItem(Item item) {
+    item.delete();
+  }
 }

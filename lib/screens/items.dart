@@ -35,7 +35,7 @@ class _ItemsState extends State<Items> {
   void dispose() {
     // Hive.close(); for all
 
-    Hive.box("itemBox").close();
+    //Hive.box("itemBox").close();
     super.dispose();
   }
 
@@ -60,12 +60,10 @@ class _ItemsState extends State<Items> {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                               onTap: () => CustomeAlertState().addAlert(
-                                  context,
-                                  "u",
-                                  items[index].name,
-                                  items[index].sku,
-                                  items[index].desc,
-                                  items[index].price),
+                                    context,
+                                    "u",
+                                    items[index],
+                                  ),
                               child: CustomCard(
                                   key,
                                   "i",

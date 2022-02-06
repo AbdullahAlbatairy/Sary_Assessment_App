@@ -35,7 +35,7 @@ class CustomeAlertState extends State<CustomeAlert> {
     return Container();
   }
 
-  Future addAlert(context, type, [name, sku, desc, price]) => showDialog(
+  Future addAlert(context, type, [itemUpdate]) => showDialog(
       context: context,
       builder: (context) {
         return type == "a"
@@ -138,13 +138,13 @@ class CustomeAlertState extends State<CustomeAlert> {
                     children: [
                       const Text("Name"),
                       TextFormField(
-                        initialValue: name,
+                        initialValue: itemUpdate.name,
                         validator: (value) {
                           if (value == "null")
                             return "Please Enter a valid price";
                         },
                         onChanged: (value) {
-                          item.name = value;
+                          itemUpdate.name = value;
                         },
                         decoration: const InputDecoration(
                             hintText: "Enter the item name"),
@@ -155,9 +155,9 @@ class CustomeAlertState extends State<CustomeAlert> {
                       ),
                       const Text("sku"),
                       TextFormField(
-                        initialValue: sku,
+                        initialValue: itemUpdate.sku,
                         onChanged: (value) {
-                          item.sku = value;
+                          itemUpdate.sku = value;
                         },
                         decoration: const InputDecoration(
                             hintText: "Enter the item sku"),
@@ -167,9 +167,9 @@ class CustomeAlertState extends State<CustomeAlert> {
                       ),
                       const Text("desc"),
                       TextFormField(
-                        initialValue: desc,
+                        initialValue: itemUpdate.desc,
                         onChanged: (value) {
-                          item.desc = value;
+                          itemUpdate.desc = value;
                         },
                         decoration: const InputDecoration(
                             hintText: "Enter the item desc"),
@@ -179,14 +179,15 @@ class CustomeAlertState extends State<CustomeAlert> {
                       ),
                       const Text("Price"),
                       TextFormField(
-                        initialValue: price.toString(),
+                        initialValue: itemUpdate.price.toString(),
                         validator: (value) {
                           if (value == "null")
                             return "Please Enter a valid price";
                         },
                         onChanged: (value) {
-                          if (value.isNotEmpty)
-                            item.price = double.parse(value);
+                          if (value.isNotEmpty) {
+                            itemUpdate.price = double.parse(value);
+                          }
                         },
                         decoration: const InputDecoration(
                             hintText: "Enter the item price"),
@@ -203,7 +204,7 @@ class CustomeAlertState extends State<CustomeAlert> {
                             "Update",
                             CommunityMaterialIcons.plus,
                             false,
-                            item,
+                            itemUpdate,
                           ),
                           ElavatedFloatingButton(
                             key,
@@ -211,6 +212,12 @@ class CustomeAlertState extends State<CustomeAlert> {
                             CommunityMaterialIcons.minus,
                             false,
                           ),
+                          // ElavatedFloatingButton(
+                          //   key,
+                          //   "Delete",
+                          //   CommunityMaterialIcons.minus,
+                          //   false,
+                          // ),
                         ],
                       )
                     ],

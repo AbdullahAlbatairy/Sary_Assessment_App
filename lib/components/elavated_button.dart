@@ -87,7 +87,18 @@ class _ElavatedFloatingButtonState extends State<ElavatedFloatingButton> {
                           widget.item?.sku ?? "",
                           widget.item?.desc ?? "",
                           widget.item?.price ?? 0.0);
-                    } else {
+                    } else if (widget.label == "Update") {
+                      CRUD.editItem(
+                          widget.item!,
+                          widget.item?.name ?? "",
+                          widget.item?.sku ?? "",
+                          widget.item?.desc ?? "",
+                          widget.item?.price ?? 0.0);
+                    }
+                    //else if (widget.label == "Delete") {
+                    //   print("here");
+                    //   CRUD.deleteItem(widget.item!); }
+                    else {
                       Navigator.pop(context);
                     }
                   },
@@ -95,68 +106,4 @@ class _ElavatedFloatingButtonState extends State<ElavatedFloatingButton> {
                   label: Text(widget.label),
                 ));
   }
-
-  // Future addAlert(context) => showDialog(
-  //     context: context,
-  //     builder: (context) => AlertDialog(
-  //           scrollable: true,
-  //           title: Text("Add Item"),
-  //           content: Container(
-  //             height: MediaQuery.of(context).size.height / 2,
-  //             decoration:
-  //                 BoxDecoration(borderRadius: BorderRadius.circular(20)),
-  //             child: Column(
-  //               crossAxisAlignment: CrossAxisAlignment.start,
-  //               children: [
-  //                 const Text("Name"),
-  //                 TextField(
-  //                   onChanged: (value) => print(value),
-  //                   decoration:
-  //                       const InputDecoration(hintText: "Enter the item name"),
-  //                   controller: _c,
-  //                 ),
-  //                 const SizedBox(
-  //                   height: 15,
-  //                 ),
-  //                 const Text("sku"),
-  //                 const TextField(
-  //                   decoration: InputDecoration(hintText: "Enter the item sku"),
-  //                 ),
-  //                 const SizedBox(
-  //                   height: 15,
-  //                 ),
-  //                 const Text("desc"),
-  //                 const TextField(
-  //                   decoration:
-  //                       InputDecoration(hintText: "Enter the item desc"),
-  //                 ),
-  //                 const SizedBox(
-  //                   height: 15,
-  //                 ),
-  //                 const Text("Price"),
-  //                 const TextField(
-  //                   decoration:
-  //                       InputDecoration(hintText: "Enter the item price"),
-  //                   keyboardType: TextInputType.number,
-  //                 ),
-  //                 const SizedBox(
-  //                   height: 30,
-  //                 ),
-  //                 Row(
-  //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //                   children: const [
-  //                     ElavatedFloatingButton(
-  //                         label: "Add",
-  //                         icon: CommunityMaterialIcons.plus,
-  //                         isTransaction: false),
-  //                     ElavatedFloatingButton(
-  //                         label: "Cancel",
-  //                         icon: CommunityMaterialIcons.minus,
-  //                         isTransaction: false),
-  //                   ],
-  //                 )
-  //               ],
-  //             ),
-  //           ),
-  //         ));
 }
