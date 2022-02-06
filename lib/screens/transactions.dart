@@ -5,9 +5,17 @@ import 'package:sary_assessment_app/components/app_bar.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'dart:math' as math;
 import 'package:intl/intl.dart';
+import 'package:sary_assessment_app/screens/transaction_detail.dart';
 
-class Transactions extends StatelessWidget {
+class Transactions extends StatefulWidget {
   const Transactions({Key? key}) : super(key: key);
+
+  @override
+  State<Transactions> createState() => _TransactionsState();
+}
+
+class _TransactionsState extends State<Transactions> {
+  Key? get key => null;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +41,11 @@ class Transactions extends StatelessWidget {
                         itemCount: 10,
                         itemBuilder: (context, index) {
                           return GestureDetector(
-                              onTap: () => print("hi"),
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const TransactionDetails())),
                               child: CustomCard(
                                 key,
                                 "t",
@@ -53,17 +65,19 @@ class Transactions extends StatelessWidget {
               child: Row(
                 children: const [
                   ElavatedFloatingButton(
-                    icon: CommunityMaterialIcons.arrow_up_bold_circle_outline,
-                    label: "Send",
-                    isTransaction: true,
+                    null,
+                    "Send",
+                    CommunityMaterialIcons.arrow_up_bold_circle_outline,
+                    true,
                   ),
                   SizedBox(
                     width: 10,
                   ),
                   ElavatedFloatingButton(
-                    icon: CommunityMaterialIcons.arrow_down_bold_circle_outline,
-                    label: "Receive",
-                    isTransaction: true,
+                    null,
+                    "Receive",
+                    CommunityMaterialIcons.arrow_down_bold_circle_outline,
+                    true,
                   ),
                 ],
               ),

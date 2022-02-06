@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:sary_assessment_app/components/custom_alert.dart';
 
 import 'package:sary_assessment_app/components/custom_card.dart';
 import 'package:sary_assessment_app/components/elavated_button.dart';
@@ -6,10 +8,36 @@ import 'package:sary_assessment_app/components/app_bar.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'dart:math' as math;
 import 'package:intl/intl.dart';
+import 'package:sary_assessment_app/model/item.dart';
 import 'package:sary_assessment_app/screens/transaction_detail.dart';
 
-class Items extends StatelessWidget {
+import '../boxes.dart';
+
+class Items extends StatefulWidget {
   const Items({Key? key}) : super(key: key);
+
+  @override
+  State<Items> createState() => _ItemsState();
+}
+
+class _ItemsState extends State<Items> {
+  Key? get key => null;
+  final itemBox = Boxes.getItems();
+  late List items;
+  @override
+  void initState() {
+    items = itemBox.values.toList();
+    //print(items[2].name);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // Hive.close(); for all
+
+    Hive.box("itemBox").close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,30 +56,44 @@ class Items extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.builder(
-                        itemCount: 10,
+                        itemCount: items.length,
                         itemBuilder: (context, index) {
                           return GestureDetector(
-                              onTap: () => Navigator.push(
+                              onTap: () => CustomeAlertState().addAlert(
                                   context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const TransactionDetails())),
-                              child: CustomCard(key, "i", "Afia Corn Oil",
-                                  "PRO-SA2", "6 x 320 ml", 12.13));
+                                  "u",
+                                  items[index].name,
+                                  items[index].sku,
+                                  items[index].desc,
+                                  items[index].price),
+                              child: CustomCard(
+                                  key,
+                                  "i",
+                                  items[index].name,
+                                  items[index].sku,
+                                  items[index].desc,
+                                  items[index].price));
                         }),
                   ),
                 ],
               ),
             ),
-            const Positioned(
+            Positioned(
               bottom: 40,
               child: ElavatedFloatingButton(
-                icon: CommunityMaterialIcons.plus,
-                label: "Add Item",
-                isTransaction: false,
+                key,
+                "Add Item",
+                CommunityMaterialIcons.plus,
+                false,
               ),
             )
           ],
         ));
   }
+
+  // Future addItem(String name, String sku, String desc, double price) async {
+  //   final item = Item(name, sku, desc, price);
+  //   final box = Boxes.getItems();
+  //   box.add(item);
+  // }
 }
