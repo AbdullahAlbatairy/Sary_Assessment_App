@@ -130,13 +130,14 @@ class CustomeAlertState extends State<CustomeAlert> {
                 scrollable: true,
                 title: const Text("Update Item"),
                 content: Container(
-                  height: MediaQuery.of(context).size.height / 2,
+                  height: (MediaQuery.of(context).size.height / 2) + 50,
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(20)),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    //crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Name"),
+                      const Align(
+                          alignment: Alignment.topLeft, child: Text("Name")),
                       TextFormField(
                         initialValue: itemUpdate.name,
                         validator: (value) {
@@ -153,7 +154,8 @@ class CustomeAlertState extends State<CustomeAlert> {
                       const SizedBox(
                         height: 15,
                       ),
-                      const Text("sku"),
+                      const Align(
+                          alignment: Alignment.topLeft, child: Text("sku")),
                       TextFormField(
                         initialValue: itemUpdate.sku,
                         onChanged: (value) {
@@ -165,7 +167,8 @@ class CustomeAlertState extends State<CustomeAlert> {
                       const SizedBox(
                         height: 15,
                       ),
-                      const Text("desc"),
+                      const Align(
+                          alignment: Alignment.topLeft, child: Text("desc")),
                       TextFormField(
                         initialValue: itemUpdate.desc,
                         onChanged: (value) {
@@ -177,7 +180,8 @@ class CustomeAlertState extends State<CustomeAlert> {
                       const SizedBox(
                         height: 15,
                       ),
-                      const Text("Price"),
+                      const Align(
+                          alignment: Alignment.topLeft, child: Text("Price")),
                       TextFormField(
                         initialValue: itemUpdate.price.toString(),
                         validator: (value) {
@@ -206,16 +210,21 @@ class CustomeAlertState extends State<CustomeAlert> {
                             false,
                             itemUpdate,
                           ),
-                          ElavatedFloatingButton(
-                            key,
-                            "Cancel",
-                            CommunityMaterialIcons.minus,
-                            false,
-                          ),
                           ElavatedFloatingButton(key, "Delete",
-                              CommunityMaterialIcons.minus, false, itemUpdate),
+                              CommunityMaterialIcons.delete, false, itemUpdate),
                         ],
-                      )
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Center(
+                        child: ElavatedFloatingButton(
+                          key,
+                          "Cancel",
+                          CommunityMaterialIcons.minus,
+                          false,
+                        ),
+                      ),
                     ],
                   ),
                 ),
