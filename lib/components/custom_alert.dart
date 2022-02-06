@@ -212,12 +212,8 @@ class CustomeAlertState extends State<CustomeAlert> {
                             CommunityMaterialIcons.minus,
                             false,
                           ),
-                          // ElavatedFloatingButton(
-                          //   key,
-                          //   "Delete",
-                          //   CommunityMaterialIcons.minus,
-                          //   false,
-                          // ),
+                          ElavatedFloatingButton(key, "Delete",
+                              CommunityMaterialIcons.minus, false, itemUpdate),
                         ],
                       )
                     ],

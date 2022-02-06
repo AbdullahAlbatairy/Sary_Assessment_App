@@ -88,10 +88,4 @@ class _ItemsState extends State<Items> {
           ],
         ));
   }
-
-  // Future addItem(String name, String sku, String desc, double price) async {
-  //   final item = Item(name, sku, desc, price);
-  //   final box = Boxes.getItems();
-  //   box.add(item);
-  // }
 }

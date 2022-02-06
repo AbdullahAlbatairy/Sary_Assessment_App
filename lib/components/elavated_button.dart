@@ -94,11 +94,10 @@ class _ElavatedFloatingButtonState extends State<ElavatedFloatingButton> {
                           widget.item?.sku ?? "",
                           widget.item?.desc ?? "",
                           widget.item?.price ?? 0.0);
-                    }
-                    //else if (widget.label == "Delete") {
-                    //   print("here");
-                    //   CRUD.deleteItem(widget.item!); }
-                    else {
+                    } else if (widget.label == "Delete") {
+                      print("here");
+                      CRUD.deleteItem(widget.item!);
+                    } else {
                       Navigator.pop(context);
                     }
                   },
