@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:provider/src/provider.dart';
 import 'package:sary_assessment_app/components/custom_alert.dart';
 
 import 'package:sary_assessment_app/components/custom_card.dart';
@@ -8,6 +9,7 @@ import 'package:sary_assessment_app/components/app_bar.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'dart:math' as math;
 import 'package:intl/intl.dart';
+import 'package:sary_assessment_app/functions/crud.dart';
 import 'package:sary_assessment_app/model/item.dart';
 import 'package:sary_assessment_app/screens/transaction_detail.dart';
 
@@ -24,6 +26,7 @@ class _ItemsState extends State<Items> {
   Key? get key => null;
   final itemBox = Boxes.getItems();
   late List items;
+  CRUD crud = CRUD();
   @override
   void initState() {
     items = itemBox.values.toList();
@@ -56,21 +59,21 @@ class _ItemsState extends State<Items> {
                 children: [
                   Expanded(
                     child: ListView.builder(
-                        itemCount: items.length,
+                        itemCount: context.watch<CRUD>().getItemsCount(),
                         itemBuilder: (context, index) {
                           return GestureDetector(
                               onTap: () => CustomeAlertState().addAlert(
                                     context,
                                     "u",
-                                    items[index],
+                                    context.read<CRUD>().getItem(index),
                                   ),
                               child: CustomCard(
                                   key,
                                   "i",
-                                  items[index].name,
-                                  items[index].sku,
-                                  items[index].desc,
-                                  items[index].price));
+                                  context.watch<CRUD>().getItem(index).name!,
+                                  context.watch<CRUD>().getItem(index).sku!,
+                                  context.watch<CRUD>().getItem(index).desc!,
+                                  context.watch<CRUD>().getItem(index).price!));
                         }),
                   ),
                 ],

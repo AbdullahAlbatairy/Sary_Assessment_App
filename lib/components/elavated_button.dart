@@ -1,5 +1,6 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
 import 'package:sary_assessment_app/functions/crud.dart';
 import 'package:sary_assessment_app/model/item.dart';
 
@@ -23,7 +24,7 @@ class ElavatedFloatingButton extends StatefulWidget {
 
 class _ElavatedFloatingButtonState extends State<ElavatedFloatingButton> {
   // late TextEditingController _c;
-
+  CRUD crud = CRUD();
   @override
   void initState() {
     super.initState();
@@ -82,21 +83,34 @@ class _ElavatedFloatingButtonState extends State<ElavatedFloatingButton> {
                           borderRadius: BorderRadius.circular(10))),
                   onPressed: () {
                     if (widget.label == "Add") {
-                      CRUD.addItem(
+                      context.read<CRUD>().addItem(
                           widget.item?.name ?? "",
                           widget.item?.sku ?? "",
                           widget.item?.desc ?? "",
                           widget.item?.price ?? 0.0);
+
+                      // crud.addItem(
+                      //     widget.item?.name ?? "",
+                      //     widget.item?.sku ?? "",
+                      //     widget.item?.desc ?? "",
+                      //     widget.item?.price ?? 0.0);
                     } else if (widget.label == "Update") {
-                      CRUD.editItem(
+                      context.read<CRUD>().editItem(
                           widget.item!,
                           widget.item?.name ?? "",
                           widget.item?.sku ?? "",
                           widget.item?.desc ?? "",
                           widget.item?.price ?? 0.0);
+
+                      // crud.editItem(
+                      //     widget.item!,
+                      //     widget.item?.name ?? "",
+                      //     widget.item?.sku ?? "",
+                      //     widget.item?.desc ?? "",
+                      //     widget.item?.price ?? 0.0);
                     } else if (widget.label == "Delete") {
-                      print("here");
-                      CRUD.deleteItem(widget.item!);
+                      context.read<CRUD>().deleteItem(widget.item!);
+                      // crud.deleteItem(widget.item!);
                     } else {
                       Navigator.pop(context);
                     }
