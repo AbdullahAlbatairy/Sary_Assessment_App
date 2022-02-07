@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 import 'package:sary_assessment_app/functions/crud.dart';
 import 'package:sary_assessment_app/model/item.dart';
+import 'package:sary_assessment_app/widgets/custom_toast_message.dart';
 
 import 'custom_alert.dart';
 
@@ -28,15 +29,7 @@ class _ElavatedFloatingButtonState extends State<ElavatedFloatingButton> {
   @override
   void initState() {
     super.initState();
-
-    // _c = TextEditingController();
   }
-
-  // @override
-  // void dispose() {
-  //   _c.dispose();
-  //   super.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -88,12 +81,8 @@ class _ElavatedFloatingButtonState extends State<ElavatedFloatingButton> {
                           widget.item?.sku ?? "",
                           widget.item?.desc ?? "",
                           widget.item?.price ?? 0.0);
-
-                      // crud.addItem(
-                      //     widget.item?.name ?? "",
-                      //     widget.item?.sku ?? "",
-                      //     widget.item?.desc ?? "",
-                      //     widget.item?.price ?? 0.0);
+                      CustomToastMessageState()
+                          .toastMessage(context, "New Item is added");
                     } else if (widget.label == "Update") {
                       context.read<CRUD>().editItem(
                           widget.item!,
@@ -101,16 +90,12 @@ class _ElavatedFloatingButtonState extends State<ElavatedFloatingButton> {
                           widget.item?.sku ?? "",
                           widget.item?.desc ?? "",
                           widget.item?.price ?? 0.0);
-
-                      // crud.editItem(
-                      //     widget.item!,
-                      //     widget.item?.name ?? "",
-                      //     widget.item?.sku ?? "",
-                      //     widget.item?.desc ?? "",
-                      //     widget.item?.price ?? 0.0);
+                      CustomToastMessageState()
+                          .toastMessage(context, "Item has been updated");
                     } else if (widget.label == "Delete") {
                       context.read<CRUD>().deleteItem(widget.item!);
-                      // crud.deleteItem(widget.item!);
+                      CustomToastMessageState()
+                          .toastMessage(context, "Item has been deleted");
                     } else {
                       Navigator.pop(context);
                     }

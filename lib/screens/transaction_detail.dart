@@ -1,8 +1,7 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:sary_assessment_app/components/app_bar.dart';
-import 'package:sary_assessment_app/components/custom_card.dart';
-import 'package:sary_assessment_app/components/elavated_button.dart';
+import 'package:sary_assessment_app/widgets/app_bar.dart';
+import 'package:sary_assessment_app/widgets/custom_card.dart';
 
 class TransactionDetails extends StatelessWidget {
   const TransactionDetails({Key? key}) : super(key: key);

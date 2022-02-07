@@ -1,7 +1,6 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:sary_assessment_app/components/elavated_button.dart';
 import 'package:sary_assessment_app/model/item.dart';
 
 import '../boxes.dart';
@@ -10,35 +9,17 @@ class CRUD with ChangeNotifier {
   List<Item> _itemBox = [];
   final itemBox = Boxes.getItems();
 
-  // void getItem() {
-  //   final itemBox = Boxes.getItems();
-
-  //   _itemBox = itemBox.values.toList();
-
-  //   notifyListeners();
-  // }
-
-  // Item getItems(index) {
-  //   return _itemBox[index];
-  // }
-
-  // List<Item> getActiveItem() {
-  //   return _itemBox;
-  // }
   int getItemsCount() {
-    final itemBox = Boxes.getItems();
     _itemBox = itemBox.values.toList();
     return _itemBox.length;
   }
 
-  List<Item> getItems() {
-    final itemBox = Boxes.getItems();
-    _itemBox = itemBox.values.toList();
-    return _itemBox;
-  }
+  // List<Item> getItems() {
+  //   _itemBox = itemBox.values.toList();
+  //   return _itemBox;
+  // }
 
   Item getItem(index) {
-    final itemBox = Boxes.getItems();
     _itemBox = itemBox.values.toList();
     return _itemBox[index];
   }
